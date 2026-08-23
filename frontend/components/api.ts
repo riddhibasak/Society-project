@@ -1,4 +1,4 @@
-export const API=process.env.NEXT_PUBLIC_API_URL||'https://society-backend-api-ow08.onrender.com';
+export const API=process.env.NEXT_PUBLIC_API_URL||'https://society-maintenance-api-9bun.onrender.com';
 export function auth():HeadersInit {const token=typeof window==='undefined'?'':localStorage.getItem('token')||'';return token?{Authorization:`Bearer ${token}`}:{}}
 export async function request(path:string, options:RequestInit={}){
   try {
