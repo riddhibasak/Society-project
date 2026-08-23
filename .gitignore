@@ -1,0 +1,12 @@
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+backend/.env
+backend/.venv/
+backend/uploads/
+__pycache__/
+*.pyc
+backend/test_society.db
+.tools/
+node.zip
+python-installer.exe

@@ -1,0 +1,2 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-slate-50 text-slate-900}input,textarea,select{@apply w-full rounded-lg border border-slate-300 px-3 py-2}button{@apply rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700}.card{@apply rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200}.badge{@apply rounded-full px-2 py-1 text-xs font-semibold}
