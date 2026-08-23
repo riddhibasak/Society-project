@@ -88,7 +88,7 @@ def serialize_complaint(c,s,detail=False):
     return d
 
 app=FastAPI(title="Society Maintenance Tracker API",version="1.0.0")
-app.add_middleware(CORSMiddleware,allow_origins=os.getenv("CORS_ORIGINS","http://localhost:3000").split(","),allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
+app.add_middleware(CORSMiddleware,allow_origins=["*"] if os.getenv("CORS_ORIGINS","*")=="*" else [x.strip() for x in os.getenv("CORS_ORIGINS","*").split(",")],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
 Path(os.getenv("UPLOAD_DIR","uploads")).mkdir(parents=True, exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=os.getenv("UPLOAD_DIR","uploads")), name="uploads")
 def send_email(to: str, subject: str, html: str):
