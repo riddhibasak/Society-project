@@ -15,6 +15,11 @@ from sqlalchemy import Boolean, DateTime, Enum as SAEnum, ForeignKey, Integer, S
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, relationship, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg://society:society@localhost:5432/society")
+# Render provides a standard PostgreSQL URL; SQLAlchemy needs the installed psycopg driver explicitly.
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
+elif DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
 SECRET_KEY = os.getenv("SECRET_KEY", "development-only-change-me")
 ACCESS_TOKEN_MINUTES = int(os.getenv("ACCESS_TOKEN_MINUTES", "1440"))
 pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
