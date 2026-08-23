@@ -20,6 +20,8 @@ if DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
 elif DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
+if "sslmode" not in DATABASE_URL and ("render.com" in DATABASE_URL or "neon.tech" in DATABASE_URL):
+    DATABASE_URL += "?sslmode=require" if "?" not in DATABASE_URL else "&sslmode=require"
 SECRET_KEY = os.getenv("SECRET_KEY", "development-only-change-me")
 ACCESS_TOKEN_MINUTES = int(os.getenv("ACCESS_TOKEN_MINUTES", "1440"))
 import bcrypt
